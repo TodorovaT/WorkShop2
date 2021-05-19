@@ -1,0 +1,81 @@
+﻿@model WorkShop2.ViewModels.EnrollmentCourseIndexViewModel
+
+@{
+    ViewData["Title"] = "Листа на запишувања";
+    Layout = "~/Views/Shared/_LayoutSluzba.cshtml";
+}
+
+<h2>Листа на запишувања</h2>
+
+<p>
+    <a asp-action="Create">Креирај ново запишување</a>
+</p>
+
+<form asp-controller="Enrollments" asp-action="Index" method="get">
+    <p>
+        Предмет: <input type="text" asp-for="EnrollmentCourse" />
+        Индекс: <input type="text" asp-for="EnrollmentIndex" />
+        Година: <select asp-for="EnrollmentGrade" asp-items="Model.Grades">
+            <option value="">Сите</option>
+        </select>
+        Семестар: <select asp-for="EnrollmentSemester" asp-items="Model.Semesters">
+            <option value="">Сите</option>
+        </select>
+        <input type="submit" value="Филтрирај" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Semester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Year)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Student)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Enrollments[0].Course)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Enrollments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Semester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grade)
+                </td>
+                <td>
+                    @if (item.StudentId != null)
+                    {
+                        <a asp-controller="Students" asp-action="Details" asp-route-id="@item.StudentId">@Html.DisplayFor(modelItem => item.Student.FullName)</a>
+                    }
+                </td>
+                <td>
+                    @if (item.CourseId != null)
+                    {
+                        <a asp-controller="Courses" asp-action="Details" asp-route-id="@item.CourseId">@Html.DisplayFor(modelItem => item.Course.Title)</a>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Измени</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Детали</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Избриши</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

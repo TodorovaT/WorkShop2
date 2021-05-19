@@ -1,0 +1,60 @@
+﻿@model WorkShop2.Models.Student
+
+@{
+    ViewData["Title"] = "Детали за студентот";
+}
+
+<h2>Детали</h2>
+
+<div>
+    <h4>Студент</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AcquiredCredits)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AcquiredCredits)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentSemester)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CurrentSemester)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EducationLevel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EducationLevel)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Измени</a> |
+    <a asp-action="Index">Назад кон листата</a>
+</div>

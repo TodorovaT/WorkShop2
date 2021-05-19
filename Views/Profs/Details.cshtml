@@ -1,0 +1,19 @@
+﻿@model WorkShop2.Models.Prof
+
+@{
+    ViewData["Title"] = "Листа";
+    Layout = "~/Views/Shared/_LayoutSluzba.cshtml";
+}
+
+<h2>Листа на запишани студенти</h2>
+
+<div>
+    <h4>Prof</h4>
+    <hr />
+    <dl class="dl-horizontal">
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Промени</a> |
+    <a asp-action="Index">Деталиt</a>
+</div>
